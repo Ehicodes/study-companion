@@ -1,0 +1,63 @@
+/* Colors */
+:root {
+  --ink: #1F2A44;
+  --paper: #eaeffa;
+  --card: #FFFFFF;
+  --slate: #5B667A;
+  --line: #DDE3EE;
+  --highlight: #dfb018db;
+  --gold-soft: #ffd738;
+  --mint: #2FA67A;
+  --mint-soft: #E2F4EC;
+  --rose: #D9604F;
+  --rose-soft: #FBE6E2;
+  --sky: #3E7BD6;
+  --sky-soft: #E1ECFB;
+  --white: #fff;
+}
+
+/* Resets */
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: inherit;
+}
+
+html {
+  box-sizing: border-box;
+  font-size: 62.5%;
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: "Segoe UI", system-ui, -apple-system, sans-serif;
+  font-size: 1.6rem;
+  line-height: 1.5;
+  background-color: var(--paper);
+  color: var(--ink);
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+ul,
+ol {
+  list-style: none;
+}
+
+button {
+  font: inherit;
+  color: inherit;
+  cursor: pointer;
+  border: 0;
+  background: none;
+}
+
+:focus-visible {
+  outline: 3px solid var(--sky);
+  outline-offset: 2px;
+}

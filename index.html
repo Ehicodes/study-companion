@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Study Companion</title>
+  <link rel="stylesheet" href="css/base.css">
+  <link rel="stylesheet" href="css/layout.css">
+  <link rel="stylesheet" href="css/components.css">
+  <script src="js/menu.js" defer></script>
+</head>
+<body>
+
+  <header class="header">
+  <a href="index.html" class="header__brand">Study<span class="header__brand-accent">Companion</span></a>
+
+ <nav class="header__nav" id="header-nav">
+    <a href="#features" class="header__link">Features</a>
+    <a href="#how-it-works" class="header__link">How it works</a>
+    <a href="dashboard.html" class="btn btn--primary">Get started</a>
+  </nav>
+
+  <button class="header__menu-btn" aria-label="Open menu" aria-expanded="false" aria-controls="nav">
+    <span class="header__menu-bar"></span>
+    <span class="header__menu-bar"></span>
+    <span class="header__menu-bar"></span>
+  </button>
+</header>
+
+<main>
+      <!--Hero section-->
+  <section class="hero">
+    <p class="hero__eyebrow">Made for students</p>
+    <h1 class="hero__title">Study with a plan. <span class="hero__title--accent"> Keep the streak.</span></h1>
+    <p class="hero__lead">
+      Organize your notes and PDFs, schedule study sessions,
+      time yourself, and watch your consistency grow.
+    </p>
+
+    <div class="hero__actions">
+      <a href="dashboard.html" class="btn btn--primary">Start studying</a>
+      <a href="#how-it-works" class="btn btn--outline">See how it works</a>
+    </div>
+
+    <p class="hero__note">Free to use. No account needed.</p>
+
+    <div class="hero__preview">
+     <div class="streak-card">
+        <p class="streak-card__count">
+            6 <span class="streak-card__label">day streak</span>
+        </p>
+        <ul class="streak-card__days" aria-label="Studied 6 of the last 7 days">
+            <li class="streak-card__day streak-card__day--hit"></li>
+            <li class="streak-card__day streak-card__day--hit"></li>
+            <li class="streak-card__day streak-card__day--hit"></li>
+            <li class="streak-card__day streak-card__day--hit"></li>
+            <li class="streak-card__day streak-card__day--hit"></li>
+            <li class="streak-card__day streak-card__day--hit"></li>
+            <li class="streak-card__day"></li>
+        </ul>
+</div>
+
+      <div class="plan-card">
+        <h2 class="plan-card__title">Today's plan</h2>
+        <ul class="plan-card__list">
+          <li class="plan-card__item">
+            <div>
+              <p class="plan-card__subject">CSC 301</p>
+              <p class="plan-card__meta">3:00 PM, 45 min</p>
+            </div>
+            <span class="tag tag--done">Done</span>
+          </li>
+          <li class="plan-card__item">
+            <div>
+              <p class="plan-card__subject">JavaScript</p>
+              <p class="plan-card__meta">7:00 PM, 1 hour</p>
+            </div>
+            <span class="tag tag--next">Next</span>
+          </li>
+        </ul>
+      </div>
+
+      <p class="hero__paragraph">Another one down. Keep going.</p>
+    </div>
+  </section>
+
+  <!--Features section-->
+<section class="features" id="features">
+      <h2 class="features__title">Everything for consistent studying</h2>
+      <p class="features__subtitle">
+        Materials, schedule and progress in one place.
+      </p>
+
+      <ul class="features__list">
+        <li class="feature-card">
+          <span class="feature-card__icon">M</span>
+          <div class="feature-card__body">
+            <h3 class="feature-card__title">Materials library</h3>
+            <p class="feature-card__text">
+              Upload PDFs, notes, slides and links into your own folders.
+            </p>
+          </div>
+        </li>
+
+        <li class="feature-card">
+          <span class="feature-card__icon">S</span>
+          <div class="feature-card__body">
+            <h3 class="feature-card__title">Study schedule</h3>
+            <p class="feature-card__text">
+              Pick a subject, days, time and duration, and get reminders.
+            </p>
+          </div>
+        </li>
+
+        <li class="feature-card">
+          <span class="feature-card__icon">T</span>
+          <div class="feature-card__body">
+            <h3 class="feature-card__title">Study timer</h3>
+            <p class="feature-card__text">
+              Track your time and mark each session complete.
+            </p>
+          </div>
+        </li>
+
+        <li class="feature-card">
+          <span class="feature-card__icon">K</span>
+          <div class="feature-card__body">
+            <h3 class="feature-card__title">Streaks</h3>
+            <p class="feature-card__text">
+              Finish your sessions day after day to build a streak.
+            </p>
+          </div>
+        </li>
+
+        <li class="feature-card">
+          <span class="feature-card__icon">E</span>
+          <div class="feature-card__body">
+            <h3 class="feature-card__title">Encouragement</h3>
+            <p class="feature-card__text">
+              A kind message after a finished or a missed session.
+            </p>
+          </div>
+        </li>
+
+        <li class="feature-card">
+          <span class="feature-card__icon">P</span>
+          <div class="feature-card__body">
+            <h3 class="feature-card__title">Progress</h3>
+            <p class="feature-card__text">
+              See weekly study time, finished sessions and streaks.
+            </p>
+          </div>
+        </li>
+      </ul>
+    </section>
+
+      <!--How it works section-->
+    <section class="steps" id="how-it-works">
+      <h2 class="steps__title">How it works</h2>
+
+      <ol class="steps__list">
+        <li class="step">
+          <span class="step__number">1</span>
+          <div class="step__body">
+            <h3 class="step__title">Add your materials</h3>
+            <p class="step__text">
+              Create folders for each course and add what you're studying.
+            </p>
+          </div>
+        </li>
+
+        <li class="step">
+          <span class="step__number">2</span>
+          <div class="step__body">
+            <h3 class="step__title">Plan your sessions</h3>
+            <p class="step__text">
+              Schedule your week so you know what to study and when.
+            </p>
+          </div>
+        </li>
+
+        <li class="step">
+          <span class="step__number">3</span>
+          <div class="step__body">
+            <h3 class="step__title">Study and track</h3>
+            <p class="step__text">
+              Use the timer, finish sessions, and watch your streak grow.
+            </p>
+          </div>
+        </li>
+      </ol>
+    </section>
+     
+    <!--CTA section-->
+    <section class="cta-band">
+      <h2 class="cta-band__title">Ready for your first session?</h2>
+      <p class="cta-band__text">
+         Add your first session and start building the habit today.
+      </p>
+      <a href="dashboard.html" class="btn btn--highlight">Get started</a>
+    </section>
+  </main>
+
+    <!--Footer section-->
+  <footer class="footer">
+    <p class="footer__text">
+     © 2026 Study Companion. Built by Ehi.
+    </p>
+  </footer>
+
+</body>
+</html>
