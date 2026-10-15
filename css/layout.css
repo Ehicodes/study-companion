@@ -5,6 +5,7 @@
   justify-content: space-between;
   padding: 1.6rem 2rem;
   position: relative;
+    z-index: 20;
 }
 
 .header__brand {
@@ -26,15 +27,17 @@
   z-index: 10;
   flex-direction: column;
   gap: .5rem;
-  padding: 1.2rem 2rem 2rem;
-  background-color: var(--card);
+  padding: 1.2rem 2rem 2.4rem;
+  background-color: var(--gold-soft);
   border-bottom: 1px solid var(--line);
   text-align: center;
+  border-radius: 0 0 1.6rem 1.6rem;
+
 
   /* hidden state */
   opacity: 0;
   visibility: hidden;
-  transform: translateY(-1rem);
+  transform: translateY(-3rem);
   transition: opacity 0.25s ease, transform 0.25s ease, visibility 0.25s ease;
 }
 
@@ -48,6 +51,11 @@
   padding: .5rem 0;
   font-size: 1.5rem;
   color: var(--slate);
+  cursor: pointer;
+}
+
+.header__nav .btn{
+    padding: 1rem 1.5rem;
 }
 
 .header__menu-btn {
@@ -82,6 +90,23 @@
   transform: translateY(calc(-0.2rem - 2.5px)) rotate(-45deg);
 }
 
+.overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 5;
+  background-color: rgba(31, 42, 68, 0.25);
+  backdrop-filter: blur(5px);
+  -webkit-backdrop-filter: blur(5px);
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.25s ease, visibility 0.25s ease;
+}
+
+.overlay--visible {
+  opacity: 1;
+  visibility: visible;
+}
+
 /* Hero */
 .hero {
   padding: 2rem 2rem 3.6rem;
@@ -100,7 +125,7 @@
 
 .hero__title {
   font-size: 3.4rem;
-  font-weight: 800;
+  font-weight: 800; 
   line-height: 1.12;
   letter-spacing: -0.05rem;
 }
@@ -135,6 +160,7 @@
   flex-direction: column;
   gap: 1.2rem;
 }
+
 
 /* Features */
 .features {
@@ -198,3 +224,156 @@
   font-size: 1.2rem;
   color: var(--slate);
 }
+
+/* Reduced Motion */
+@media (prefers-reduced-motion: reduce) {
+  .header__menu-bar,
+  .header__nav,
+  .overlay {
+    transition: none;
+  }
+}
+
+/* Desktop */
+@media (min-width: 56.25em) {
+  .header {
+    padding: 2.2rem 5.6rem;
+  }
+
+  .header__menu-btn,
+  .overlay {
+    display: none;
+  }
+
+  .header__nav {
+    display: flex;
+    position: static;
+    flex-direction: row;
+    align-items: center;
+    gap: 2.8rem;
+    margin-left: auto;
+    padding: 0;
+    background-color: transparent;
+    border-bottom: 0;
+    border-radius: 0;
+    box-shadow: none;
+    opacity: 1;
+    visibility: visible;
+    transform: none;
+  }
+
+  .header__nav .btn {
+    background-color: var(--ink);
+    color: #fff;
+  }
+
+  .hero {
+    display: grid;
+    grid-template-columns: 1.1fr 1fr;
+    column-gap: 4rem;
+    align-items: start;
+    padding: 4.8rem 5.6rem 7.2rem;
+  }
+
+  .hero > * {
+    grid-column: 1;
+  }
+
+  .hero__eyebrow {
+    justify-self: start;
+  }
+
+  .hero__title {
+    font-size: 5.4rem;
+    letter-spacing: -0.1rem;
+  }
+
+  .hero__lead {
+    font-size: 1.8rem;
+    max-width: 48rem;
+    margin: 2.2rem 0 3rem;
+  }
+
+  .hero__actions {
+    flex-direction: row;
+  }
+
+  .hero__note {
+    text-align: left;
+  }
+
+  .hero__preview {
+    grid-column: 2;
+    grid-row: 1 / 6;
+    margin-top: 0;
+    gap: 1.8rem;
+  }
+
+  .features,
+  .steps {
+    padding: 6.4rem 5.6rem;
+  }
+
+  .features__title,
+  .steps__title,
+  .cta-band__title {
+    font-size: 3.2rem;
+  }
+
+  .features__subtitle {
+    font-size: 1.6rem;
+  }
+
+  .features__list {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.8rem;
+    margin-top: 3.2rem;
+  }
+
+  .steps__list {
+    flex-direction: row;
+    gap: 2.8rem;
+    margin-top: 3.2rem;
+  }
+
+  .cta-band {
+    display: grid;
+    grid-template-columns: 1fr auto;
+    align-items: center;
+    column-gap: 3rem;
+    padding: 5.6rem;
+  }
+
+  .cta-band__title,
+  .cta-band__text {
+    grid-column: 1;
+  }
+
+  .cta-band .btn {
+    grid-column: 2;
+    grid-row: 1 / 3;
+    align-self: start;
+  }
+}
+
+/* @media (min-width: 900px) {
+  .feature-card {
+    grid-template-columns: 1fr;
+    padding: 2.2rem;
+  }
+
+  .step {
+    flex: 1;
+    grid-template-columns: 1fr;
+    gap: 0.6rem;
+  }
+
+  .step__number {
+    font-size: 4.4rem;
+  }
+
+  .step__title,
+  .feature-card__title {
+    font-size: 1.8rem;
+  }
+} */

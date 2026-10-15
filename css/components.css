@@ -188,3 +188,27 @@
   line-height: 1.5;
   color: var(--slate);
 }
+
+/* Desktop */
+@media (min-width: 56.25em) {
+  .feature-card {
+    grid-template-columns: 1fr;
+    align-content: start;
+    padding: 2.2rem;
+  }
+
+  .step {
+    flex: 1;
+    grid-template-columns: 1fr;
+    gap: 0.6rem;
+  }
+
+  .step__number {
+    font-size: 4.4rem;
+  }
+
+  .step__title,
+  .feature-card__title {
+    font-size: 1.8rem;
+  }
+}

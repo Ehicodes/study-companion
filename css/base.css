@@ -1,11 +1,11 @@
-/* Colors */
 :root {
+    /* Colors */
   --ink: #1F2A44;
   --paper: #eaeffa;
   --card: #FFFFFF;
   --slate: #5B667A;
   --line: #DDE3EE;
-  --highlight: #dfb018db;
+  --highlight: #cda00cdb;
   --gold-soft: #ffd738;
   --mint: #2FA67A;
   --mint-soft: #E2F4EC;
@@ -14,6 +14,7 @@
   --sky: #3E7BD6;
   --sky-soft: #E1ECFB;
   --white: #fff;
+
 }
 
 /* Resets */
