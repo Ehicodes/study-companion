@@ -1,18 +1,186 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-    <link rel="stylesheet" href="css/base.css">
-
-    <link rel="stylesheet" href="css/layout.css">
-
-    <link rel="stylesheet" href="css/components.css">
-
-   
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Dashboard | Study Companion</title>
+  <link rel="stylesheet" href="css/base.css">
+  <link rel="stylesheet" href="css/layout.css">
+  <link rel="stylesheet" href="css/components.css">
+  <script src="js/menu.js" defer></script>
 </head>
-<body>
-    
+<body class="app">
+
+  <header class="header header--sidebar">
+    <a href="index.html" class="header__brand">
+      Study<span class="header__brand-accent">Companion</span>
+    </a>
+
+    <nav class="header__nav" id="site-nav">
+      <a href="dashboard.html" class="header__link header__link--active" aria-current="page">Dashboard</a>
+      <a href="materials.html" class="header__link">Materials</a>
+      <a href="schedule.html" class="header__link">Schedule</a>
+      <a href="timer.html" class="header__link">Timer</a>
+      <a href="progress.html" class="header__link">Progress</a>
+    </nav>
+
+    <button
+      class="header__menu-btn"
+      aria-label="Open menu"
+      aria-expanded="false"
+      aria-controls="site-nav"
+    >
+      <span class="header__menu-bar"></span>
+      <span class="header__menu-bar"></span>
+      <span class="header__menu-bar"></span>
+    </button>
+
+   <!-- <p class="header__version">Version 1</p> --> 
+  </header>
+
+  <div class="overlay"></div>
+
+  <main class="dashboard">
+
+    <section class="dashboard__intro">
+      <h1 class="dashboard__title">Good evening, Ehi</h1>
+      <p class="dashboard__subtitle">One session left today.</p>
+    </section>
+
+    <div class="dashboard__columns">
+
+      <div class="dashboard__column">
+
+        <section class="streak-card">
+          <div class="streak-card__top">
+            <p class="streak-card__count">
+              6 <span class="streak-card__label">day streak</span>
+            </p>
+            <p class="streak-card__week">5h 20m this week</p>
+          </div>
+
+          <ul class="streak-card__names" aria-hidden="true">
+            <li>M</li>
+            <li>T</li>
+            <li>W</li>
+            <li>T</li>
+            <li>F</li>
+            <li>S</li>
+            <li>S</li>
+          </ul>
+          <ul class="streak-card__days" aria-label="Studied 6 of the last 7 days">
+            <li class="streak-card__day streak-card__day--hit"></li>
+            <li class="streak-card__day streak-card__day--hit"></li>
+            <li class="streak-card__day streak-card__day--hit"></li>
+            <li class="streak-card__day streak-card__day--hit"></li>
+            <li class="streak-card__day streak-card__day--hit"></li>
+            <li class="streak-card__day streak-card__day--hit"></li>
+            <li class="streak-card__day streak-card__day--today"></li>
+          </ul>
+        </section>
+
+        <section class="dashboard__section">
+          <h2 class="dashboard__heading">Today's plan</h2>
+
+          <ul class="plan-list">
+            <li class="plan-item">
+              <p class="plan-item__time">3:00 PM</p>
+              <div class="plan-item__body">
+                <p class="plan-item__subject">CSC 301</p>
+                <p class="plan-item__duration">45 min</p>
+              </div>
+              <span class="tag tag--done">Done</span>
+            </li>
+
+            <li class="plan-item">
+              <p class="plan-item__time">7:00 PM</p>
+              <div class="plan-item__body">
+                <p class="plan-item__subject">JavaScript</p>
+                <p class="plan-item__duration">1 hour</p>
+              </div>
+              <a href="timer.html" class="btn btn--small btn--highlight">Start</a>
+            </li>
+          </ul>
+        </section>
+
+        <section class="dashboard__section">
+          <h2 class="dashboard__heading">My materials</h2>
+
+          <ul class="folder-grid">
+            <li>
+              <a href="materials.html" class="folder">
+                <span class="folder__name">CSC 301</span>
+                <span class="folder__count">8 files</span>
+              </a>
+            </li>
+            <li>
+              <a href="materials.html" class="folder">
+                <span class="folder__name">JavaScript</span>
+                <span class="folder__count">12 files</span>
+              </a>
+            </li>
+            <li>
+              <a href="materials.html" class="folder">
+                <span class="folder__name">React</span>
+                <span class="folder__count">3 files</span>
+              </a>
+            </li>
+            <li>
+              <a href="materials.html" class="folder">
+                <span class="folder__name">Exam prep</span>
+                <span class="folder__count">5 files</span>
+              </a>
+            </li>
+          </ul>
+        </section>
+
+      </div>
+
+      <div class="dashboard__column">
+
+        <!-- Desktop only: on mobile the timer is its own page -->
+        <section class="dashboard__section timer-card">
+          <h2 class="dashboard__heading">Study timer</h2>
+          <p class="timer-card__subject">JavaScript</p>
+          <p class="timer-card__goal">Goal: 1 hour</p>
+
+          <div class="timer-card__ring">
+            <div class="timer-card__clock">
+              <p class="timer-card__time">37:12</p>
+              <p class="timer-card__total">of 60:00</p>
+            </div>
+          </div>
+
+          <div class="timer-card__actions">
+            <button class="btn btn--outline">Pause</button>
+            <button class="btn btn--primary">Finish session</button>
+          </div>
+        </section>
+
+        <!-- Desktop only -->
+        <section class="dashboard__section week-chart">
+          <h2 class="dashboard__heading">This week</h2>
+
+          <ul class="week-chart__bars" aria-label="Study time per day this week">
+            <li class="week-chart__bar"><span class="week-chart__fill" style="height: 6rem"></span>M</li>
+            <li class="week-chart__bar"><span class="week-chart__fill" style="height: 8rem"></span>T</li>
+            <li class="week-chart__bar"><span class="week-chart__fill" style="height: 4.5rem"></span>W</li>
+            <li class="week-chart__bar"><span class="week-chart__fill" style="height: 9rem"></span>T</li>
+            <li class="week-chart__bar"><span class="week-chart__fill" style="height: 7rem"></span>F</li>
+            <li class="week-chart__bar"><span class="week-chart__fill" style="height: 5.5rem"></span>S</li>
+            <li class="week-chart__bar"><span class="week-chart__fill" style="height: 0.6rem"></span>S</li>
+          </ul>
+        </section>
+
+        <p class="encouragement">
+          Another one down! Keep going. One more session keeps your streak alive.
+        </p>
+
+      </div>
+
+    </div>
+
+  </main>
+
 </body>
 </html>
