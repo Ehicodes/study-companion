@@ -4,7 +4,6 @@
 
 /* ---------- Page ---------- */
 .materials {
-  max-width: 80rem;
   margin: 0 auto;
   padding: 0.4rem 2rem 2rem;
 }
@@ -198,7 +197,7 @@
 }
 
 /* ---------- Desktop ---------- */
-@media (min-width: 56.25) {
+@media (min-width: 56.25em) {
   .materials {
     max-width: none;
     margin: 0;
@@ -369,3 +368,6 @@
     color: var(--ink);
   }
 }
+
+
+/* we will do the activw link with js */

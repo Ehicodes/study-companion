@@ -1,16 +1,203 @@
+<!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-    <link rel="stylesheet" href="css/base.css">
-
-    <link rel="stylesheet" href="css/layout.css">
-
-    <link rel="stylesheet" href="css/components.css">
-
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Schedule | Study Companion</title>
+  <link rel="stylesheet" href="css/base.css">
+  <link rel="stylesheet" href="css/layout.css">
+  <link rel="stylesheet" href="css/components.css">
+  <link rel="stylesheet" href="css/pages/schedule.css">
+  <script src="js/menu.js" defer></script>
 </head>
-<body>
-    
+<body class="app">
+
+  <header class="header header--sidebar">
+    <a href="index.html" class="header__brand">
+      Study<span class="header__brand-accent">Companion</span>
+    </a>
+
+    <nav class="header__nav" id="site-nav">
+      <a href="dashboard.html" class="header__link">Dashboard</a>
+      <a href="materials.html" class="header__link">Materials</a>
+      <a href="schedule.html" class="header__link header__link--active" aria-current="page">Schedule</a>
+      <a href="timer.html" class="header__link">Timer</a>
+      <a href="progress.html" class="header__link">Progress</a>
+    </nav>
+
+    <button
+      class="header__menu-btn"
+      aria-label="Open menu"
+      aria-expanded="false"
+      aria-controls="site-nav"
+    >
+      <span class="header__menu-bar"></span>
+      <span class="header__menu-bar"></span>
+      <span class="header__menu-bar"></span>
+    </button>
+  </header>
+
+  <div class="overlay"></div>
+
+  <main class="schedule">
+
+    <div class="schedule__top">
+      <div>
+        <h1 class="schedule__title">Schedule</h1>
+        <p class="schedule__subtitle">Plan your study week and set reminders.</p>
+      </div>
+      <a href="#new-session" class="btn btn--primary btn--small schedule__new">+ New session</a>
+    </div>
+
+    <div class="schedule__layout">
+
+      <section class="panel week" aria-labelledby="week-title">
+        <div class="week__head">
+          <h2 class="week__title" id="week-title">This week</h2>
+          <div class="week__nav">
+            <button class="week__arrow" aria-label="Previous week">&lsaquo;</button>
+            <span class="week__range">12 to 18 Oct</span>
+            <button class="week__arrow" aria-label="Next week">&rsaquo;</button>
+          </div>
+        </div>
+
+        <ul class="week__days">
+          <li class="day day--today">
+            <p class="day__name">Mon <span class="day__date">12 Oct</span></p>
+            <ul class="day__slots">
+              <li class="slot slot--csc slot--done">
+                <p class="slot__subject">CSC 301</p>
+                <p class="slot__time">3:00 PM · 45 min</p>
+              </li>
+              <li class="slot slot--js">
+                <p class="slot__subject">JavaScript</p>
+                <p class="slot__time">7:00 PM · 1 hour</p>
+              </li>
+            </ul>
+          </li>
+          <li class="day">
+            <p class="day__name">Tue <span class="day__date">13 Oct</span></p>
+            <ul class="day__slots">
+              <li class="slot slot--mass">
+                <p class="slot__subject">Mass Comm</p>
+                <p class="slot__time">5:00 PM · 1 hour</p>
+              </li>
+            </ul>
+          </li>
+          <li class="day">
+            <p class="day__name">Wed <span class="day__date">14 Oct</span></p>
+            <ul class="day__slots">
+              <li class="slot slot--js">
+                <p class="slot__subject">JavaScript</p>
+                <p class="slot__time">7:00 PM · 1 hour</p>
+              </li>
+              <li class="slot slot--exam">
+                <p class="slot__subject">Exam prep</p>
+                <p class="slot__time">9:00 PM · 30 min</p>
+              </li>
+            </ul>
+          </li>
+          <li class="day">
+            <p class="day__name">Thu <span class="day__date">15 Oct</span></p>
+            <ul class="day__slots">
+              <li class="slot slot--csc">
+                <p class="slot__subject">CSC 301</p>
+                <p class="slot__time">3:00 PM · 45 min</p>
+              </li>
+            </ul>
+          </li>
+          <li class="day">
+            <p class="day__name">Fri <span class="day__date">16 Oct</span></p>
+            <ul class="day__slots">
+              <li class="slot slot--js">
+                <p class="slot__subject">JavaScript</p>
+                <p class="slot__time">7:00 PM · 1 hour</p>
+              </li>
+            </ul>
+          </li>
+          <li class="day">
+            <p class="day__name">Sat <span class="day__date">17 Oct</span></p>
+            <p class="day__rest">Rest day</p>
+          </li>
+          <li class="day">
+            <p class="day__name">Sun <span class="day__date">18 Oct</span></p>
+            <ul class="day__slots">
+              <li class="slot slot--exam">
+                <p class="slot__subject">Exam prep</p>
+                <p class="slot__time">4:00 PM · 1 hour</p>
+              </li>
+            </ul>
+          </li>
+        </ul>
+
+        <ul class="legend" aria-label="Colour key">
+          <li class="legend__item"><span class="legend__swatch legend__swatch--js"></span>JavaScript</li>
+          <li class="legend__item"><span class="legend__swatch legend__swatch--csc"></span>CSC 301</li>
+          <li class="legend__item"><span class="legend__swatch legend__swatch--mass"></span>Mass Comm</li>
+          <li class="legend__item"><span class="legend__swatch legend__swatch--exam"></span>Exam prep</li>
+          <li class="legend__item"><span class="legend__swatch legend__swatch--done"></span>Completed</li>
+        </ul>
+      </section>
+
+      <section class="panel session-form" id="new-session" aria-labelledby="form-title">
+        <h2 class="session-form__title" id="form-title">New study session</h2>
+
+        <form class="form">
+
+          <div class="field">
+            <label class="field__label" for="subject">Subject</label>
+            <select class="field__control" id="subject" name="subject">
+              <option>JavaScript</option>
+              <option>CSC 301</option>
+              <option>Mass Comm</option>
+              <option>React</option>
+              <option>Exam prep</option>
+            </select>
+          </div>
+
+          <fieldset class="field">
+            <legend class="field__label">Days</legend>
+            <ul class="options">
+              <li><label class="option"><input class="option__input" type="checkbox" name="days" value="mon" checked><span class="option__label">Mon</span></label></li>
+              <li><label class="option"><input class="option__input" type="checkbox" name="days" value="tue"><span class="option__label">Tue</span></label></li>
+              <li><label class="option"><input class="option__input" type="checkbox" name="days" value="wed" checked><span class="option__label">Wed</span></label></li>
+              <li><label class="option"><input class="option__input" type="checkbox" name="days" value="thu"><span class="option__label">Thu</span></label></li>
+              <li><label class="option"><input class="option__input" type="checkbox" name="days" value="fri" checked><span class="option__label">Fri</span></label></li>
+              <li><label class="option"><input class="option__input" type="checkbox" name="days" value="sat"><span class="option__label">Sat</span></label></li>
+              <li><label class="option"><input class="option__input" type="checkbox" name="days" value="sun"><span class="option__label">Sun</span></label></li>
+            </ul>
+          </fieldset>
+
+          <div class="field">
+            <label class="field__label" for="time">Time</label>
+            <input class="field__control" type="time" id="time" name="time" value="19:00">
+          </div>
+
+          <fieldset class="field">
+            <legend class="field__label">Duration</legend>
+            <ul class="options">
+              <li><label class="option"><input class="option__input" type="radio" name="duration" value="30"><span class="option__label">30 min</span></label></li>
+              <li><label class="option"><input class="option__input" type="radio" name="duration" value="45"><span class="option__label">45 min</span></label></li>
+              <li><label class="option"><input class="option__input" type="radio" name="duration" value="60" checked><span class="option__label">1 hour</span></label></li>
+              <li><label class="option"><input class="option__input" type="radio" name="duration" value="120"><span class="option__label">2 hours</span></label></li>
+            </ul>
+          </fieldset>
+
+          <label class="toggle">
+            <span class="toggle__text">Remind me 10 min before</span>
+            <input class="toggle__input" type="checkbox" name="reminder" checked>
+            <span class="toggle__switch" aria-hidden="true"></span>
+          </label>
+
+          <p class="session-form__summary">JavaScript · Mon, Wed, Fri · 7:00 PM · 1 hour</p>
+
+          <button class="btn btn--primary session-form__save" type="submit">Save session</button>
+        </form>
+      </section>
+
+    </div>
+
+  </main>
+
 </body>
 </html>
