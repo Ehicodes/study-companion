@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Progress | Study Companion</title>
+  <link rel="stylesheet" href="css/base.css">
+  <link rel="stylesheet" href="css/layout.css">
+  <link rel="stylesheet" href="css/components.css">
+  <link rel="stylesheet" href="css/pages/progress.css">
+  <script src="js/menu.js" defer></script>
+</head>
+<body class="app">
+
+  <header class="header header--sidebar">
+    <a href="index.html" class="header__brand">
+      Study<span class="header__brand-accent">Companion</span>
+    </a>
+
+    <nav class="header__nav" id="site-nav">
+      <a href="dashboard.html" class="header__link">Dashboard</a>
+      <a href="materials.html" class="header__link">Materials</a>
+      <a href="schedule.html" class="header__link">Schedule</a>
+      <a href="timer.html" class="header__link">Timer</a>
+      <a href="progress.html" class="header__link header__link--active" aria-current="page">Progress</a>
+    </nav>
+
+    <button
+      class="header__menu-btn"
+      aria-label="Open menu"
+      aria-expanded="false"
+      aria-controls="site-nav"
+    >
+      <span class="header__menu-bar"></span>
+      <span class="header__menu-bar"></span>
+      <span class="header__menu-bar"></span>
+    </button>
+  </header>
+
+  <div class="overlay"></div>
+
+  <main class="progress">
+
+    <div class="progress__top">
+      <div>
+        <h1 class="progress__title">Progress</h1>
+        <p class="progress__subtitle">See how your study habit is growing.</p>
+      </div>
+
+      <div class="range" role="group" aria-label="Time range">
+        <button class="range__btn range__btn--active" aria-pressed="true">This week</button>
+        <button class="range__btn" aria-pressed="false">This month</button>
+      </div>
+    </div>
+
+    <ul class="stats">
+      <li class="stat">
+        <p class="stat__label">Study time</p>
+        <p class="stat__value">5h 20m</p>
+        <p class="stat__note">+45 min vs last week</p>
+      </li>
+      <li class="stat">
+        <p class="stat__label">Sessions finished</p>
+        <p class="stat__value">9</p>
+        <p class="stat__note">of 11 planned</p>
+      </li>
+      <li class="stat stat--streak">
+        <p class="stat__label">Current streak</p>
+        <p class="stat__value">6 <span class="stat__unit">days</span></p>
+        <p class="stat__note">Best: 11 days</p>
+      </li>
+    </ul>
+
+    <div class="progress__charts">
+
+      <section class="card">
+        <h2 class="card__heading">Study time per day</h2>
+        <ul class="day-bars" aria-label="Study time per day this week">
+          <li class="day-bars__item">
+            <span class="day-bars__fill" style="height: 6rem"></span>
+            <span class="day-bars__name">M</span>
+            <span class="day-bars__time">1h 05m</span>
+          </li>
+          <li class="day-bars__item">
+            <span class="day-bars__fill" style="height: 8rem"></span>
+            <span class="day-bars__name">T</span>
+            <span class="day-bars__time">1h 20m</span>
+          </li>
+          <li class="day-bars__item">
+            <span class="day-bars__fill" style="height: 4.5rem"></span>
+            <span class="day-bars__name">W</span>
+            <span class="day-bars__time">45m</span>
+          </li>
+          <li class="day-bars__item">
+            <span class="day-bars__fill" style="height: 9rem"></span>
+            <span class="day-bars__name">T</span>
+            <span class="day-bars__time">1h 30m</span>
+          </li>
+          <li class="day-bars__item">
+            <span class="day-bars__fill" style="height: 7rem"></span>
+            <span class="day-bars__name">F</span>
+            <span class="day-bars__time">1h 10m</span>
+          </li>
+          <li class="day-bars__item">
+            <span class="day-bars__fill" style="height: 5.5rem"></span>
+            <span class="day-bars__name">S</span>
+            <span class="day-bars__time">55m</span>
+          </li>
+          <li class="day-bars__item">
+            <span class="day-bars__fill" style="height: 0.6rem"></span>
+            <span class="day-bars__name">S</span>
+            <span class="day-bars__time">None</span>
+          </li>
+        </ul>
+      </section>
+
+      <section class="card">
+        <h2 class="card__heading">Time by subject</h2>
+        <ul class="subject-bars">
+          <li class="subject-bar">
+            <p class="subject-bar__top">
+              <span class="subject-bar__name">JavaScript</span>
+              <span class="subject-bar__time">2h 10m</span>
+            </p>
+            <div class="subject-bar__track">
+              <span class="subject-bar__fill subject-bar__fill--js" style="width: 65%"></span>
+            </div>
+          </li>
+          <li class="subject-bar">
+            <p class="subject-bar__top">
+              <span class="subject-bar__name">CSC 301</span>
+              <span class="subject-bar__time">1h 30m</span>
+            </p>
+            <div class="subject-bar__track">
+              <span class="subject-bar__fill subject-bar__fill--csc" style="width: 45%"></span>
+            </div>
+          </li>
+          <li class="subject-bar">
+            <p class="subject-bar__top">
+              <span class="subject-bar__name">Mass Comm</span>
+              <span class="subject-bar__time">1h 00m</span>
+            </p>
+            <div class="subject-bar__track">
+              <span class="subject-bar__fill subject-bar__fill--mass" style="width: 30%"></span>
+            </div>
+          </li>
+          <li class="subject-bar">
+            <p class="subject-bar__top">
+              <span class="subject-bar__name">Exam prep</span>
+              <span class="subject-bar__time">40m</span>
+            </p>
+            <div class="subject-bar__track">
+              <span class="subject-bar__fill subject-bar__fill--exam" style="width: 20%"></span>
+            </div>
+          </li>
+        </ul>
+      </section>
+
+    </div>
+
+    <section class="card progress__calendar">
+      <h2 class="card__heading">Last 4 weeks</h2>
+
+      <ul class="streak-calendar" aria-label="Studied on 22 of the last 28 days">
+        <!-- Day names (decoration only) -->
+        <li class="streak-calendar__name" aria-hidden="true">M</li>
+        <li class="streak-calendar__name" aria-hidden="true">T</li>
+        <li class="streak-calendar__name" aria-hidden="true">W</li>
+        <li class="streak-calendar__name" aria-hidden="true">T</li>
+        <li class="streak-calendar__name" aria-hidden="true">F</li>
+        <li class="streak-calendar__name" aria-hidden="true">S</li>
+        <li class="streak-calendar__name" aria-hidden="true">S</li>
+        <!-- 28 days, oldest first -->
+        <li class="streak-calendar__day streak-calendar__day--hit"></li>
+        <li class="streak-calendar__day streak-calendar__day--hit"></li>
+        <li class="streak-calendar__day"></li>
+        <li class="streak-calendar__day streak-calendar__day--hit"></li>
+        <li class="streak-calendar__day streak-calendar__day--hit"></li>
+        <li class="streak-calendar__day streak-calendar__day--hit"></li>
+        <li class="streak-calendar__day"></li>
+        <li class="streak-calendar__day streak-calendar__day--hit"></li>
+        <li class="streak-calendar__day streak-calendar__day--hit"></li>
+        <li class="streak-calendar__day streak-calendar__day--hit"></li>
+        <li class="streak-calendar__day streak-calendar__day--hit"></li>
+        <li class="streak-calendar__day"></li>
+        <li class="streak-calendar__day streak-calendar__day--hit"></li>
+        <li class="streak-calendar__day streak-calendar__day--hit"></li>
+        <li class="streak-calendar__day"></li>
+        <li class="streak-calendar__day streak-calendar__day--hit"></li>
+        <li class="streak-calendar__day streak-calendar__day--hit"></li>
+        <li class="streak-calendar__day streak-calendar__day--hit"></li>
+        <li class="streak-calendar__day streak-calendar__day--hit"></li>
+        <li class="streak-calendar__day streak-calendar__day--hit"></li>
+        <li class="streak-calendar__day"></li>
+        <li class="streak-calendar__day streak-calendar__day--hit"></li>
+        <li class="streak-calendar__day streak-calendar__day--hit"></li>
+        <li class="streak-calendar__day streak-calendar__day--hit"></li>
+        <li class="streak-calendar__day streak-calendar__day--hit"></li>
+        <li class="streak-calendar__day streak-calendar__day--hit"></li>
+        <li class="streak-calendar__day streak-calendar__day--hit"></li>
+        <li class="streak-calendar__day streak-calendar__day--today"></li>
+      </ul>
+
+      <ul class="calendar-key">
+        <li class="calendar-key__item"><span class="calendar-key__swatch calendar-key__swatch--hit"></span>Studied</li>
+        <li class="calendar-key__item"><span class="calendar-key__swatch"></span>Missed</li>
+        <li class="calendar-key__item"><span class="calendar-key__swatch calendar-key__swatch--today"></span>Today</li>
+      </ul>
+    </section>
+
+    <p class="encouragement encouragement--plain">
+      Six days in a row. One more session today keeps your streak alive.
+    </p>
+
+  </main>
+
+</body>
+</html>

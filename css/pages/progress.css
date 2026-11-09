@@ -1,0 +1,424 @@
+/* Progress page (progress.html): stat cards, study time per day,
+   time by subject and the 4-week streak calendar. */
+
+
+/* ---------- Page ---------- */
+.progress {
+  margin: 0 auto;
+  padding: 0.4rem 2rem 4rem;
+}
+
+.progress__title {
+  font-size: 2.2rem;
+  font-weight: 800;
+  line-height: 1.2;
+}
+
+.progress__subtitle {
+  margin-top: 0.4rem;
+  font-size: 1.3rem;
+  color: var(--slate);
+}
+
+/* ---------- Time range switch ---------- */
+.range {
+  display: flex;
+  margin-top: 1.4rem;
+  padding: 0.3rem;
+  background-color: var(--card);
+  border: 1px solid var(--line);
+  border-radius: 99.9rem;
+}
+
+.range__btn {
+  flex: 1;
+  padding: 0.8rem 1.6rem;
+  font-size: 1.2rem;
+  color: var(--slate);
+  border-radius: 99.9rem;
+  transition: background-color 0.2s, color 0.2s;
+}
+
+.range__btn--active {
+  color: #fff;
+  background-color: var(--ink);
+}
+
+/* ---------- Stat cards ---------- */
+.stats {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
+  margin-top: 1.4rem;
+}
+
+.stat {
+  padding: 1.2rem;
+  background-color: var(--card);
+  border: 1px solid var(--line);
+  border-radius: 1.4rem;
+}
+
+/* The streak card is dark and runs the full width on mobile */
+.stat--streak {
+  grid-column: 1 / -1;
+  color: #fff;
+  background-color: var(--ink);
+  border-color: var(--ink);
+}
+
+.stat__label {
+  font-size: 1.2rem;
+  color: var(--slate);
+}
+
+.stat--streak .stat__label {
+  color: #fff;
+  opacity: 0.8;
+}
+
+.stat__value {
+  margin-top: 0.4rem;
+  font-size: 2.6rem;
+  font-weight: 800;
+  line-height: 1.2;
+}
+
+.stat__unit {
+  font-size: 1.3rem;
+  font-weight: 500;
+  opacity: 0.8;
+}
+
+.stat__note {
+  margin-top: 0.2rem;
+  font-size: 1.1rem;
+  color: var(--mint);
+}
+
+.stat--streak .stat__note {
+  color: var(--gold-soft);
+}
+
+/* ---------- Cards ---------- */
+.card {
+  min-width: 0;
+  margin-top: 1.4rem;
+  padding: 1.4rem;
+  background-color: var(--card);
+  border: 1px solid var(--line);
+  border-radius: 1.4rem;
+}
+
+.card__heading {
+  margin-bottom: 1.2rem;
+  font-size: 1.4rem;
+  font-weight: 700;
+}
+
+/* ---------- Study time per day ---------- */
+.day-bars {
+  display: flex;
+  align-items: flex-end;
+  gap: 0.8rem;
+  height: 12rem;
+}
+
+.day-bars__item {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-end;
+  font-size: 1.1rem;
+  color: var(--slate);
+}
+
+.day-bars__fill {
+  display: block;
+  width: 100%;
+  margin-bottom: 0.5rem;
+  background-color: var(--mint);
+  border-radius: 0.5rem 0.5rem 0 0;
+}
+
+/* The minutes under each bar only fit on a wide screen */
+.day-bars__time {
+  display: none;
+}
+
+/* ---------- Time by subject ---------- */
+.subject-bars {
+  display: flex;
+  flex-direction: column;
+  gap: 1.2rem;
+}
+
+.subject-bar__top {
+  display: flex;
+  justify-content: space-between;
+  font-size: 1.3rem;
+}
+
+.subject-bar__name {
+  font-weight: 700;
+}
+
+.subject-bar__time {
+  font-size: 1.2rem;
+  color: var(--slate);
+}
+
+.subject-bar__track {
+  height: 0.7rem;
+  margin-top: 0.5rem;
+  overflow: hidden;
+  background-color: var(--paper);
+  border-radius: 99.9rem;
+}
+
+.subject-bar__fill {
+  display: block;
+  height: 100%;
+  border-radius: 99.9rem;
+}
+
+.subject-bar__fill--js {
+  background-color: var(--gold-soft);
+}
+
+.subject-bar__fill--csc {
+  background-color: var(--sky);
+}
+
+.subject-bar__fill--mass {
+  background-color: var(--mint);
+}
+
+.subject-bar__fill--exam {
+  background-color: var(--rose);
+}
+
+/* ---------- 4-week streak calendar ---------- */
+.streak-calendar {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  gap: 0.6rem;
+}
+
+.streak-calendar__name {
+  font-size: 1.1rem;
+  text-align: center;
+  color: var(--slate);
+}
+
+.streak-calendar__day {
+  height: 2.2rem;
+  background-color: var(--paper);
+  border: 1px solid var(--line);
+  border-radius: 0.6rem;
+}
+
+.streak-calendar__day--hit {
+  background-color: var(--highlight);
+  border-color: var(--highlight);
+}
+
+.streak-calendar__day--today {
+  background-color: transparent;
+  border: 2px dashed var(--highlight);
+}
+
+.calendar-key {
+  display: flex;
+  gap: 1.2rem;
+  margin-top: 1.2rem;
+  font-size: 1.1rem;
+  color: var(--slate);
+}
+
+.calendar-key__swatch {
+  display: inline-block;
+  width: 1rem;
+  height: 1rem;
+  margin-right: 0.5rem;
+  vertical-align: -0.1rem;
+  background-color: var(--paper);
+  border: 1px solid var(--line);
+  border-radius: 0.3rem;
+}
+
+.calendar-key__swatch--hit {
+  background-color: var(--highlight);
+  border-color: var(--highlight);
+}
+
+.calendar-key__swatch--today {
+  background-color: transparent;
+  border: 2px dashed var(--highlight);
+}
+
+.progress .encouragement {
+  margin-top: 1.6rem;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .range__btn {
+    transition: none;
+  }
+}
+
+/* ---------- Desktop ---------- */
+@media (min-width: 56.25em) {
+  .progress {
+    max-width: none;
+    margin: 0;
+    padding: 2.8rem 3.2rem 3.2rem;
+  }
+
+  .progress__top {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 2rem;
+  }
+
+  .progress__title {
+    font-size: 2.6rem;
+  }
+
+  .progress__subtitle {
+    font-size: 1.4rem;
+  }
+
+  .range {
+    flex-shrink: 0;
+    margin-top: 0;
+  }
+
+  .range__btn {
+    flex: none;
+    font-size: 1.3rem;
+  }
+
+  /* Three stat cards in a row */
+  .stats {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.8rem;
+    margin-top: 2.2rem;
+  }
+
+  .stat {
+    padding: 1.8rem;
+    border-radius: 1.6rem;
+  }
+
+  .stat--streak {
+    grid-column: auto;
+  }
+
+  .stat__label {
+    font-size: 1.3rem;
+  }
+
+  .stat__value {
+    margin-top: 0.6rem;
+    font-size: 3.4rem;
+  }
+
+  .stat__unit {
+    font-size: 1.5rem;
+  }
+
+  .stat__note {
+    font-size: 1.3rem;
+  }
+
+  .card {
+    margin-top: 1.8rem;
+    padding: 1.8rem;
+    border-radius: 1.6rem;
+  }
+
+  .card__heading {
+    margin-bottom: 1.4rem;
+    font-size: 1.6rem;
+  }
+
+  /* Bar chart on the left, subjects on the right */
+  .progress__charts {
+    display: grid;
+    grid-template-columns: minmax(0, 1.5fr) minmax(0, 1fr);
+    gap: 1.8rem;
+    margin-top: 1.8rem;
+  }
+
+  .progress__charts .card {
+    margin-top: 0;
+  }
+
+  .day-bars {
+    gap: 1.2rem;
+    height: 15rem;
+  }
+
+  .day-bars__item {
+    font-size: 1.2rem;
+  }
+
+  .day-bars__fill {
+    margin-bottom: 0.6rem;
+    border-radius: 0.6rem 0.6rem 0 0;
+  }
+
+  .subject-bars {
+    gap: 1.4rem;
+  }
+
+  .subject-bar__top {
+    font-size: 1.4rem;
+  }
+
+  .subject-bar__time {
+    font-size: 1.3rem;
+  }
+
+  .subject-bar__track {
+    height: 0.8rem;
+    margin-top: 0.6rem;
+  }
+
+  .streak-calendar {
+    gap: 0.8rem;
+    max-width: 52rem;
+  }
+
+  .streak-calendar__name {
+    font-size: 1.2rem;
+  }
+
+  .streak-calendar__day {
+    height: 2.6rem;
+    border-radius: 0.7rem;
+  }
+
+  .calendar-key {
+    gap: 1.6rem;
+    margin-top: 1.4rem;
+    font-size: 1.2rem;
+  }
+
+  .progress .encouragement {
+    margin-top: 2rem;
+  }
+}
+
+/* The minutes under each bar need a wider chart to fit */
+@media (min-width: 68.75em) {
+  .day-bars__time {
+    display: block;
+    margin-top: 0.4rem;
+    font-size: 1.1rem;
+    white-space: nowrap;
+  }
+}
