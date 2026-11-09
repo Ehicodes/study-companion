@@ -124,7 +124,7 @@
 }
 
 .slot--js {
-  background-color: var(--gold-soft);
+  background-color: var(--highlight-soft);
 }
 
 .slot--csc {
@@ -137,10 +137,6 @@
 
 .slot--exam {
   background-color: var(--rose-soft);
-}
-
-.slot--done {
-  box-shadow: inset 0 0 0 2px var(--mint);
 }
 
 /* ---------- Colour legend ---------- */
@@ -167,11 +163,11 @@
 }
 
 .legend__swatch--csc {
-  background-color: var(--sky-soft);
+  background-color: var(--slate);
 }
 
 .legend__swatch--mass {
-  background-color: var(--mint-soft);
+  background-color: var(--mint);
 }
 
 .legend__swatch--exam {

@@ -1,0 +1,177 @@
+/* Timer page (timer.html): the big timer on its own page.
+   The timer card and the plan list are shared, so they live in components.css. */
+
+/* ---------- Page ---------- */
+.timer-page {
+  max-width: 64rem;
+  margin: 0 auto;
+  padding: 0.4rem 2rem 4rem;
+}
+
+.timer-page__back {
+  display: inline-block;
+  font-size: 1.3rem;
+  color: var(--slate);
+}
+
+/* On mobile the "Timer" title is hidden from the eye (the page is obvious)
+   but stays for screen readers */
+.timer-page__intro {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip-path: inset(50%);
+  white-space: nowrap;
+}
+
+/* ---------- Timer card on this page ---------- */
+.timer-card--page {
+  margin-top: 2.6rem;
+}
+
+.timer-card--page .timer-card__subject {
+  font-size: 2rem;
+}
+
+.timer-card--page .timer-card__goal {
+  margin-top: 0.4rem;
+}
+
+.timer-card--page .timer-card__ring {
+  width: 21rem;
+  height: 21rem;
+  margin: 3rem auto 2.6rem;
+}
+
+/* No white card behind the timer on mobile, so the middle matches the page */
+.timer-card--page .timer-card__clock {
+  width: 17rem;
+  height: 17rem;
+  background-color: var(--paper);
+}
+
+.timer-card--page .timer-card__time {
+  font-size: 4rem;
+}
+
+.timer-card__note {
+  margin-top: 3rem;
+  font-size: 1.3rem;
+  color: var(--slate);
+}
+
+/* ---------- Side column (desktop only) ---------- */
+.timer-page__side {
+  display: none;
+}
+
+/* ---------- Desktop ---------- */
+@media (min-width: 56.25em) {
+  .timer-page {
+    max-width: none;
+    margin: 0;
+    padding: 2.8rem 3.2rem 3.2rem;
+  }
+
+  /* The sidebar already has a Dashboard link */
+  .timer-page__back {
+    display: none;
+  }
+
+  /* Show the title again */
+  .timer-page__intro {
+    position: static;
+    width: auto;
+    height: auto;
+    overflow: visible;
+    clip-path: none;
+    white-space: normal;
+  }
+
+  .timer-page__title {
+    font-size: 2.6rem;
+    font-weight: 800;
+    line-height: 1.2;
+  }
+
+  .timer-page__subtitle {
+    margin-top: 0.4rem;
+    font-size: 1.4rem;
+    color: var(--slate);
+  }
+
+  .timer-page__layout {
+    display: grid;
+    gap: 2.2rem;
+    margin-top: 2.2rem;
+  }
+
+  .timer-card--page {
+    margin-top: 0;
+    padding: 3.4rem 2.4rem 3rem;
+    background-color: var(--card);
+    border: 1px solid var(--line);
+    border-radius: 1.6rem;
+  }
+
+  .timer-card--page .timer-card__subject {
+    font-size: 2.2rem;
+  }
+
+  .timer-card--page .timer-card__goal {
+    font-size: 1.4rem;
+  }
+
+  .timer-card--page .timer-card__ring {
+    width: 26rem;
+    height: 26rem;
+    margin: 2.8rem auto;
+  }
+
+  .timer-card--page .timer-card__clock {
+    width: 21.4rem;
+    height: 21.4rem;
+    background-color: var(--card);
+  }
+
+  .timer-card--page .timer-card__time {
+    font-size: 5.2rem;
+  }
+
+  .timer-card--page .timer-card__total {
+    font-size: 1.4rem;
+  }
+
+  .timer-card__note {
+    margin-top: 2.2rem;
+  }
+
+  .timer-page__side {
+    display: flex;
+    flex-direction: column;
+    gap: 1.8rem;
+  }
+
+  .timer-page__plan {
+    padding: 1.8rem;
+    background-color: var(--card);
+    border: 1px solid var(--line);
+    border-radius: 1.6rem;
+  }
+
+  .timer-page__heading {
+    margin-bottom: 1rem;
+    font-size: 1.6rem;
+    font-weight: 700;
+  }
+}
+
+/* Wide screens: timer on the left, plan on the right.
+   Below this width they stack, because the big ring needs room. */
+@media (min-width: 1100px) {
+  .timer-page__layout {
+    grid-template-columns: 1fr 31rem;
+    align-items: start;
+  }
+}
