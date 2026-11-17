@@ -19,7 +19,9 @@ if(userName === null) {
 
     if(answer && answer.trim() !== ''){
         userName = answer.trim()
+        save('name', userName)
     }
 }
 
 dashboardTitle.textContent = userName? `${getGreeting()}, ${userName}` : getGreeting()
+dashboardTitle.classList.add('dashboard__tite--effect')
