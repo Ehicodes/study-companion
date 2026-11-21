@@ -14,6 +14,12 @@
   font-size: 2.2rem;
   font-weight: 800;
   line-height: 1.2;
+  transform: translateY(-50rem);
+  transition: transform .5s;
+}
+
+.dashboard__tite--effect{
+ transform: translateY(0);
 }
 
 .dashboard__subtitle {
