@@ -257,6 +257,88 @@
   border-radius: 0;
 }
 
+/* ---------- Modal (a <dialog> opened with showModal()) ---------- */
+.modal {
+  /* base.css resets every margin to 0, which would pin the dialog to the top-left.
+     margin: auto brings back the centring. */
+  margin: auto;
+  width: calc(100% - 4rem);
+  max-width: 42rem;
+  padding: 2.2rem 2rem 2rem;
+  color: var(--ink);
+  background-color: var(--card);
+  border: 1px solid var(--line);
+  border-radius: 1.6rem;
+  box-shadow: 0 2rem 4rem rgba(31, 42, 68, 0.25);
+}
+
+.modal::backdrop {
+  background-color: #1f2a448c;
+}
+
+.modal__title {
+  font-size: 2rem;
+  font-weight: 800;
+  line-height: 1.2;
+}
+
+.modal__text {
+  margin-top: 0.4rem;
+  font-size: 1.3rem;
+  color: var(--slate);
+}
+
+.modal__field {
+  margin-top: 1.8rem;
+}
+
+.modal__label {
+  display: block;
+  margin-bottom: 0.6rem;
+  font-size: 1.3rem;
+  font-weight: 700;
+}
+
+.modal__input {
+  display: block;
+  width: 100%;
+  padding: 1.1rem 1.4rem;
+  font: inherit;
+  font-size: 1.5rem;
+  color: var(--ink);
+  background-color: var(--paper);
+  border: 1px solid var(--line);
+  border-radius: 1.2rem;
+}
+
+/* JavaScript sets aria-invalid="true" on the input when the name is not accepted */
+.modal__input[aria-invalid="true"] {
+  border-color: var(--rose-deep);
+  background-color: var(--rose-soft);
+}
+
+.modal__error {
+  margin-top: 0.6rem;
+  font-size: 1.3rem;
+  font-weight: 600;
+  color: var(--rose-deep);
+}
+
+/* The hidden attribute must win over the display rules above */
+.modal__error[hidden] {
+  display: none;
+}
+
+.modal__actions {
+  display: flex;
+  gap: 1rem;
+  margin-top: 2.2rem;
+}
+
+.modal__actions .btn {
+  flex: 1;
+}
+
 /* ---------- Desktop ---------- */
 @media (min-width: 56.25em) {
   .encouragement--plain {
@@ -280,6 +362,19 @@
   .plan-item__time {
     width: 7rem;
     font-size: 1.3rem;
+  }
+
+    .modal {
+    padding: 2.8rem 2.8rem 2.6rem;
+  }
+
+  .modal__actions {
+    justify-content: flex-end;
+  }
+
+  .modal__actions .btn {
+    flex: 0 0 auto;
+    min-width: 11rem;
   }
 
 }
