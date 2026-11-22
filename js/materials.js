@@ -43,17 +43,12 @@ const clearFolderError = function () {
 
 folderCancelBtn.addEventListener('click', function() {
     folderModal.close()
-    clearFolderError()
-    folderInput.value = ''
 })
 
 folderForm.addEventListener('submit', function(e) {
   e.preventDefault()
-  let newName = folderInput.value
+  const newName = folderInput.value
     
-  // Cancel gives null, so stop 
-  if (newName === null) return;
-
   // Remove extra spaces once, then use cleanName everywhere below
   const cleanName = newName.trim();
 
@@ -61,6 +56,7 @@ folderForm.addEventListener('submit', function(e) {
   if (cleanName === '') {
      folderError.textContent = 'Folder name cannot be blank'
      folderError.hidden = false
+     folderInput.setAttribute('aria-invalid', 'true')
      return
   };
 
@@ -70,21 +66,25 @@ folderForm.addEventListener('submit', function(e) {
   );
 
   if (exists) {
-    // alert('Folder already exists!');
     folderError.textContent = 'Folder already exists!'
     folderError.hidden = false
+    folderInput.setAttribute('aria-invalid', 'true')
     return;
   }
 
   folders.push(cleanName); // add it to the list
   save('allFolders', folders); // save the whole list
   generateMarkup(cleanName); // draw only the new pill
-  folderModal.close()
-  newName = ''
-
+  folderModal.close() //Close modal
 })
 
 // Clear the error as soon as the user types
 folderInput.addEventListener('input', clearFolderError);
+
+folderModal.addEventListener('close', function() {
+    clearFolderError()
+    folderInput.value = '' //Clear input
+})
+
 
 renderPill();
