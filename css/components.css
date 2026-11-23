@@ -329,6 +329,29 @@
   display: none;
 }
 
+/* Two fields side by side (the material form: type and folder) */
+.modal__row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
+}
+
+.modal__optional {
+  font-weight: 400;
+  color: var(--slate);
+}
+
+.modal__input--area {
+  min-height: 8rem;
+  resize: vertical;
+}
+
+/* A modal with many fields scrolls inside itself on short screens */
+.modal {
+  max-height: calc(100% - 4rem);
+  overflow-y: auto;
+}
+
 .modal__actions {
   display: flex;
   gap: 1rem;
@@ -369,7 +392,7 @@
   }
 
   .modal__actions {
-    justify-content: flex-end;
+    justify-content: center;
   }
 
   .modal__actions .btn {

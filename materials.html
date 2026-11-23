@@ -8,7 +8,7 @@
   <link rel="stylesheet" href="css/layout.css">
   <link rel="stylesheet" href="css/components.css">
   <link rel="stylesheet" href="css/pages/materials.css">
- <script src="js/storage.js" defer></script>
+  <script src="js/storage.js" defer></script>
   <script src="js/materials.js" defer></script>
   <script src="js/menu.js" defer></script>
 </head>
@@ -47,7 +47,7 @@
 
     <div class="materials__top">
       <h1 class="materials__title">Materials</h1>
-      <button class="btn btn--primary btn--small">+ Add material</button>
+      <button class="btn btn--primary btn--small material__add">+ Add material</button>
     </div>
 
     <input
@@ -138,6 +138,52 @@
     <div class="modal__actions">
       <button type="button" class="btn btn--outline" id="folder-cancel">Cancel</button>
       <button type="submit" class="btn btn--primary">Save folder</button>
+    </div>
+  </form>
+</dialog>
+
+<dialog class="modal" id="material-modal" aria-labelledby="material-modal-title">
+  <form class="modal__form" id="material-form" novalidate>
+    <h2 class="modal__title" id="material-modal-title">Add material</h2>
+    <p class="modal__text">Save a note, a link, or a record of a PDF or slides.</p>
+
+    <div class="modal__field">
+      <label class="modal__label" for="material-title">Title</label>
+      <input class="modal__input" type="text" id="material-title" name="title" maxlength="60" placeholder="e.g. Array methods cheat sheet" autocomplete="off" aria-describedby="material-error">
+    </div>
+
+    <div class="modal__row">
+      <div class="modal__field">
+        <label class="modal__label" for="material-type">Type</label>
+        <select class="modal__input" id="material-type" name="type">
+          <option value="notes">Notes</option>
+          <option value="link">Link</option>
+          <option value="pdf">PDF</option>
+          <option value="slides">Slides</option>
+        </select>
+      </div>
+
+      <div class="modal__field">
+        <label class="modal__label" for="material-folder">Folder</label>
+        <select class="modal__input" id="material-folder" name="folder"></select>
+      </div>
+    </div>
+
+    <div class="modal__field">
+      <label class="modal__label" for="material-link">Link <span class="modal__optional">(optional)</span></label>
+      <input class="modal__input" type="url" id="material-link" name="link" placeholder="https://"autocomplete="off">
+    </div>
+
+    <div class="modal__field">
+      <label class="modal__label" for="material-note">Note <span class="modal__optional">(optional)</span></label>
+      <textarea class="modal__input modal__input--area" id="material-note" name="note" rows="3" maxlength="300" placeholder="Anything to remember about it"></textarea>
+    </div>
+
+    <p class="modal__error" id="material-error" role="alert" hidden></p>
+
+    <div class="modal__actions">
+      <button type="button" class="btn btn--outline" id="material-cancel">Cancel</button>
+      <button type="submit" class="btn btn--primary">Save material</button>
     </div>
   </form>
 </dialog>
