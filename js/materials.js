@@ -24,6 +24,7 @@ const addMaterialBtns = document.querySelectorAll(
 
 // The saved list of folder names (an empty list on the first visit)
 const folders = load("allFolders", []);
+const materials = load("materials", []);
 
 // Draws ONE folder pill on the page
 const generateMarkup = function (folderName) {
@@ -135,14 +136,47 @@ materialForm.addEventListener("submit", function (e) {
   if (folders.length === 0) {
     materialError.textContent = "Create a folder first.";
     materialError.hidden = false;
-
     return;
   }
+
+  const title =  materialTitle.value.trim()
+  const type = materialType.value
+  const link = materialLink.value.trim()
+  const note = materialNote.value.trim()
+  const folder = materialFolder.value
+
+
+  if(title === '') {
+       materialError.textContent = "Please give your material a title";
+       materialError.hidden = false;
+       materialTitle.setAttribute("aria-invalid", "true");
+
+       return
+  }
+  
+  const material = {
+    id: Date.now(),
+    title: title,
+    type: type,
+    folder: folder,
+    link: link,
+    note: note,
+    status: 'to study',  // always this for a new one; no variable needed
+    addedAt: Date.now(),
+ }
+
+ materials.push(material)
+
+ save('materials', materials)
+
+ materialModal.close()
+
 });
 
 const clearMaterialError = function () {
   materialError.textContent = "";
   materialError.hidden = true;
+  materialTitle.removeAttribute('aria-invalid')
 };
 
 materialModal.addEventListener("close", function () {
