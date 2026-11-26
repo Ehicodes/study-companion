@@ -17,17 +17,27 @@ const materialNote = document.querySelector("#material-note");
 const materialError = document.querySelector("#material-error");
 const materialCancelBtn = document.querySelector("#material-cancel");
 const materialTitle = document.querySelector("#material-title");
+const materialAdd = document.querySelector(".material--add");
 const addMaterialBtns = document.querySelectorAll(
   ".material__add, .material--add",
 );
-// const modalField = document.querySelector('.modal__field')
+
 
 // The saved list of folder names (an empty list on the first visit)
 const folders = load("allFolders", []);
+
+// The saved list of material objects (an empty list on the first visit)
 const materials = load("materials", []);
 
+const labels = {
+  pdf: 'PDF',
+  notes: 'Notes',
+  slides: 'Slides',
+  link: 'Link',
+}
+
 // Draws ONE folder pill on the page
-const generateMarkup = function (folderName) {
+const generateFolderMarkup = function (folderName) {
   const markup = `
     <li>
       <button class="folder-pill">
@@ -45,7 +55,7 @@ folderNewBtn.addEventListener("click", function () {
 
 // On page load: draw every saved folder once
 const renderPill = function () {
-  folders.forEach((folderName) => generateMarkup(folderName));
+  folders.forEach((folderName) => generateFolderMarkup(folderName));
 };
 
 // Hide the error message and remove the red styling
@@ -88,7 +98,7 @@ folderForm.addEventListener("submit", function (e) {
 
   folders.push(cleanName); // add it to the list
   save("allFolders", folders); // save the whole list
-  generateMarkup(cleanName); // draw only the new pill
+  generateFolderMarkup(cleanName); // draw only the new pill
   folderModal.close(); //Close modal
 });
 
@@ -119,6 +129,23 @@ const openMaterialModal = function () {
   });
 
   materialModal.showModal();
+};
+
+const generateMaterialMarkup  = function(material) {
+  const markup = `
+      <li class="material">
+        <span class="material__type material__type--${material.type}">${labels[material.type]}</span>
+        <h2 class="material__title">${material.title}</h2>
+        <p class="material__folder">${material.folder}</p>
+        <p class="material__meta"><span>${material.status}</span><span>${new Date(material.addedAt).toLocaleDateString()}</span></p>
+      </li>
+  `
+  materialAdd.closest('li').insertAdjacentHTML('beforebegin', markup)
+}
+
+// On page load: draw every saved material once
+const renderMaterial = function () {
+  materials.forEach((material) => generateMaterialMarkup(material))
 };
 
 addMaterialBtns.forEach((btn) =>
@@ -169,6 +196,8 @@ materialForm.addEventListener("submit", function (e) {
 
  save('materials', materials)
 
+ generateMaterialMarkup(material)
+
  materialModal.close()
 
 });
@@ -185,3 +214,6 @@ materialModal.addEventListener("close", function () {
 });
 
 materialTitle.addEventListener("input", clearMaterialError);
+
+
+renderMaterial();
