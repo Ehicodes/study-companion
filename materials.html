@@ -50,16 +50,12 @@
       <button class="btn btn--primary btn--small material__add">+ Add material</button>
     </div>
 
-    <input
-      type="search"
-      class="search"
-      placeholder="Search your materials"
-      aria-label="Search your materials">
+    <input type="search" class="search" placeholder="Search your materials" aria-label="Search your materials">
 
     <section class="materials__folders" aria-label="Folders">
       <ul class="folder-pills">
        
-        <li><button class="folder-pill folder-pill--active">All <span class="folder-pill__count">34</span></button></li>
+        <li><button class="folder-pill folder-pill--active" data-folder="" >All <span class="folder-pill__count">34</span></button></li>
          <!-- 
         <li><button class="folder-pill">CSC 301 <span class="folder-pill__count">8</span></button></li>
         <li><button class="folder-pill">Mass Comm <span class="folder-pill__count">9</span></button></li>
@@ -72,11 +68,11 @@
     </section>
 
     <ul class="chips" aria-label="Filter by type">
-      <li><button class="chip chip--active">All</button></li>
-      <li><button class="chip">PDFs</button></li>
-      <li><button class="chip">Notes</button></li>
-      <li><button class="chip">Slides</button></li>
-      <li><button class="chip">Links</button></li>
+      <li><button class="chip chip--active" data-type="all">All</button></li>
+      <li><button class="chip" data-type="pdf">PDFs</button></li>
+      <li><button class="chip" data-type="notes">Notes</button></li>
+      <li><button class="chip" data-type="pdf">Slides</button></li>
+      <li><button class="chip" data-type="links">Links</button></li>
     </ul>
 
     <ul class="material-grid">

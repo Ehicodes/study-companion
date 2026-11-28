@@ -18,9 +18,9 @@ const materialError = document.querySelector("#material-error");
 const materialCancelBtn = document.querySelector("#material-cancel");
 const materialTitle = document.querySelector("#material-title");
 const materialAdd = document.querySelector(".material--add");
-const addMaterialBtns = document.querySelectorAll(
-  ".material__add, .material--add",
-);
+const addMaterialBtns = document.querySelectorAll(".material__add, .material--add",);
+const chips = document.querySelectorAll('.chip')
+const searchInput = document.querySelector('.search')
 
 
 // The saved list of folder names (an empty list on the first visit)
@@ -40,7 +40,7 @@ const labels = {
 const generateFolderMarkup = function (folderName) {
   const markup = `
     <li>
-      <button class="folder-pill">
+      <button class="folder-pill" data-folder="${folderName}">
         ${folderName} <span class="folder-pill__count">0</span>
       </button>
     </li>
@@ -144,9 +144,9 @@ const generateMaterialMarkup  = function(material) {
 }
 
 // On page load: draw every saved material once
-const renderMaterial = function () {
-  materials.forEach((material) => generateMaterialMarkup(material))
-};
+// const renderMaterial = function () {
+//   materials.forEach((material) => generateMaterialMarkup(material))
+// };
 
 addMaterialBtns.forEach((btn) =>
   btn.addEventListener("click", openMaterialModal),
@@ -196,7 +196,8 @@ materialForm.addEventListener("submit", function (e) {
 
  save('materials', materials)
 
- generateMaterialMarkup(material)
+//  generateMaterialMarkup(material)
+ renderMaterials()
 
  materialModal.close()
 
@@ -215,5 +216,71 @@ materialModal.addEventListener("close", function () {
 
 materialTitle.addEventListener("input", clearMaterialError);
 
+// State: what the user has chosen so far
+let activeFolder = "" // '' means "All folders"
+let activeType  = "all"
+let searchText = ""
 
-renderMaterial();
+// Rebuild the cards on the page from the saved materials
+const renderMaterials = function() {
+  // 1. Keep only the materials that match all three choices
+  const visible = materials.filter(material => {
+    const folderMatch = activeFolder === "" || material.folder === activeFolder
+    const typeMatch = activeType === "all" || material.type === activeType
+    const searchMatch = material.title.toLowerCase().includes(searchText) || material.note.toLowerCase().includes(searchText)
+
+    return folderMatch && typeMatch && searchMatch
+  })
+
+
+ // 2. Remove the cards on the page now (the dashed add card has no .material on its li)
+document.querySelectorAll(".material-grid > li.material").forEach(card => {
+  card.remove()
+})
+
+// 3. Draw each item that passed conditions
+ visible.forEach(material => {
+  generateMaterialMarkup(material)
+ })
+
+}
+
+ // Type chips
+ chips.forEach(chip => {
+    chip.addEventListener('click', () => {
+      activeType = chip.dataset.type
+
+     chips.forEach(function (c) {
+          c.classList.remove("chip--active");
+    });
+    chip.classList.add("chip--active");
+
+    renderMaterials();
+
+    })
+ })
+
+// Folder pills (event delegation: one listener on the list)
+folderList.addEventListener('click', function(e) {
+  const pill = e.target.closest('.folder-pill')
+  if (!pill) return
+
+  activeFolder = pill.dataset.folder
+
+  folderList.querySelectorAll("folder-pill").forEach(p => {
+    p.classList.remove('folder-pill--acive')
+  })
+
+    pill.classList.add('folder-pill--acive')
+
+    renderMaterials()
+})
+
+// Search box
+searchInput.addEventListener('input', function() {
+   searchText = searchInput.value.trim().toLowerCase();
+   renderMaterials();
+})
+
+// renderMaterial();
+renderMaterials();
